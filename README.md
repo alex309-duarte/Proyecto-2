@@ -41,7 +41,7 @@ cluster<-function(x,y){
 
 cold=cluster(datos,4)
 
-#graficamos los datos
+#graficamos los datos y asignamos un color a cada cluster, los puntos en negro no pertenecen a un cluster.
 png(file="cluster_4_nucleos.png") #guadamos el gráfico generado
 plot(datos,col=cold)
 dev.off()
