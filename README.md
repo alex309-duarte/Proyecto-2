@@ -1,4 +1,7 @@
 # Proyecto-2
+
+Función que permite agrupar puntos dependiendo de la distancia euclidiana a los distintos centros, la funcion recive una arreglo de datos (x,y) de cualquier cantidad de filas, y el numeros de clusters que se desaea realizar.
+
 ```r
 #generamos 100 numeros aleatorios para x y y
 x=sample(1:20,100,replace=T) 
