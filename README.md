@@ -48,3 +48,5 @@ dev.off()
 
 
 ```
+** Gráfico de los diferentes clusters generados de la funcion implementada en R **
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/cluster_4_nucleos.png)
