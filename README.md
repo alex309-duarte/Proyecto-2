@@ -5,6 +5,8 @@ Manuel Alejandro Cardoso Duarte
 Función que permite agrupar puntos dependiendo de la distancia euclidiana a los distintos centros,estos centros son asignados dependiendo de los puntos que tengan mayor relacion con los demás, y de ahi se buscan nuevos centros.
 La función recive una arreglo de datos (x,y) de cualquier cantidad de filas, y el numeros de clusters que se desea realizar.
 
+![](https://github.com/alex309-duarte/Proyecto-2/tree/master/2020-03-27_21-49-32.png)
+
 ```r
 #generamos 100 numeros aleatorios para x y y
 x=sample(1:20,100,replace=T) 
