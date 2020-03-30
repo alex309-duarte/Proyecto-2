@@ -93,7 +93,8 @@ y
 ¿Qué es ai'?
 **R:**
 Haciendo un poco de álgebra podemos obtener: 
-![2020-03-27_21-49-09](2020-03-27_21-49-09.png)
+
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/2020-03-27_21-49-09.png)
 
 6. Using (3.4), argue that in the case of simple linear regression, the
 least squares line always passes through the point (x1, y1).
@@ -107,22 +108,22 @@ Entonces podemos concluir que la linea de mínimos cuadrados si pasa por el punt
 7.   It is claimed in the text that in the case of simple linear regression of Y onto X, the R2 statistic (3.17) is equal to the square of the correlation between X and Y (3.18). Prove that this is the case. For simplicity, you may assume that x=y=0.
 
 **R:** Sabemos que:
-![2020-03-27_22-18-16](2020-03-27_22-18-16.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/2020-03-27_22-18-16.png)
 y que:
-![2020-03-27_22-22-04](2020-03-27_22-22-04.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/2020-03-27_22-22-04.png)
 
 Por lo que podemos reescribir R cuadrada como (sustituyendo Y gorro): 
-![2020-03-27_22-30-06](2020-03-27_22-30-06.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/2020-03-27_22-30-06.png)
 Haciendo álgebra (convirtiendo el 1 en términos similares):
-![2020-03-27_23-02-26](2020-03-27_23-02-26.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/2020-03-27_23-02-26.png)
  Simplificando:
-![2020-03-27_23-08-32](2020-03-27_23-08-32.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/2020-03-27_23-08-32.png)
 
 Sabemos que la correlación al cuadrado de X y Y está dada por:
-![2020-03-27_23-09-14](2020-03-27_23-09-14.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/2020-03-27_23-09-14.png)
 
 Por lo que:
-![2020-03-27_23-10-00](2020-03-27_23-10-00.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/2020-03-27_23-10-00.png)
 
 ```R Script
 setwd('6to Semestre')
@@ -185,7 +186,7 @@ plot(auto$horsepower, auto$mpg, xlab = "horsepower", ylab = "mpg", col = "blue")
 abline(fit1, col = "red")
 ```
 
-![Rplot](Rplot.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/Rplot.png)
 
 c)
 ```r
@@ -193,7 +194,7 @@ par(mfrow = c(2, 2))
 
 plot(fit1)
 ```
-![Rplot01](Rplot01.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/Rplot01.png)
 
 En la grafica de residuales contra datos ajustados podemos observar que no hay una relación totalmente lineal. En la gráfica de residuals vs promedio, podemos observar que hay algunos puntos muy alejados, que pueden generar un mayor error en nuestra predicción.
 
@@ -202,7 +203,7 @@ a)
 ```R Script
 pairs(auto)
 ```
-![Rplot02](Rplot02.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/Rplot02.png)
 
 b) 
 ```R Script
@@ -274,7 +275,7 @@ d)
 ```R Script
 plot(fit.multi
 ```
-![Rplot03](Rplot03.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/Rplot03.png)
 
 Si tenemos algunos outlayers y podemos observar que de igual forma no existe una relación totalmente lineal. 
 
@@ -346,7 +347,7 @@ F-statistic: 230.7 on 5 and 386 DF,  p-value: < 2.2e-16
 
 Se observa un incremento en la significancia de las variables (ahora todas son significativas con excepción de cylinders) sin embargo la R cuadrado bajó. Lo que indica que podemos predecir menos datos. 
 
-![Rplot04](Rplot04.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/Rplot04.png)
 
 Observando las gráficas de residuales podemos decir que el modelo no es mucho mejor al lineal. 
 
@@ -439,6 +440,6 @@ h)
 ```R Script
 plot(fit.cars2)
 ```
-![Rplot05](Rplot05.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/Rplot05.png)
 
 Podemos observar en las gráficas de residuales algunos outlayers (mayores a 2 o menos a -2) y también en la última gráfica podemos encontrar unos cuantos puntos leverage. 
