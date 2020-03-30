@@ -5,7 +5,7 @@
 #### 1. Describe the null hypotheses to which the p-values given in Table 3.4 correspond. Explain what conclusions you can draw based on these p-values. Your explanation should be phrased in terms of sales, TV, radio, and newspaper, rather than in terms of the coefficients of the linear model. 
 ---
                      
-**R**: La hipótesis             nula relacionada a la tabla 3.4 se refiere a que los predictores "TV", "radio" y "newspapers" no tienen efecto alguno en las ventas totales. Podemos observar que los  p-valores de TV y radio, sugieren que la hipótesis nula es falsa para estos predictores, sin embargo, dado que el p-valor de newspaper es alto, podemos inferir que se cumple la hipótesis nula para este predictor.
+  **R**: La hipótesis             nula relacionada a la tabla 3.4 se refiere a que los predictores "TV", "radio" y "newspapers" no    tienen efecto alguno en las ventas totales. Podemos observar que los  p-valores de TV y radio, sugieren que la hipótesis nula es falsa para estos predictores, sin embargo, dado que el p-valor de newspaper es alto, podemos inferir que se cumple la hipótesis nula para este predictor.
 
 #### 2. Carefully explain the differences between the KNN classifier and KNN regression methods.
 ---
