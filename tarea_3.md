@@ -619,8 +619,6 @@ F-statistic: 344.3 on 1 and 98 DF,  p-value: < 2.2e-16
 
 Es visible que t-stadistic es la misma para ambos casos, con un valor de 18.56.
 
-Falata terminar 11
-
 #### 12. This problem involves simple linear regression without an intercept.
 ---
 
