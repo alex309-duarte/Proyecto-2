@@ -1,32 +1,19 @@
-### 11. En este problema vamos a investigar la estadistica t para la hipotesis nula Ho : β = 0
----
-generamos un predictor X y la respuesta de Y como;
-```r
-set.seed(1)
-x = rnorm(100)
-y = 2*x + rnorm(100)
-``` 
-a) realizar una regresión lineal de y sobre x Informe el coeficiente estimado β, el error estándar deeste coeficiente, el estadístico t y el valor p asociado con la hipótesis nula Ho : β = 0
-
-
-
-
-
-
-
+#### Samuel Romero Santiago
+#### Manuel Alejandro Cardoso Duarte
 
 ﻿# Ejercicios-Capitulo 3
-1. Describe the null hypotheses to which the p-values given in Table 3.4 correspond. Explain what conclusions you can draw based on these p-values. Your explanation should be phrased in terms of sales, TV, radio, and newspaper, rather than in terms of the coefficients of the linear model.  
+### 1. Describe the null hypotheses to which the p-values given in Table 3.4 correspond. Explain what conclusions you can draw based on these p-values. Your explanation should be phrased in terms of sales, TV, radio, and newspaper, rather than in terms of the coefficients of the linear model. 
+---
                      
 **R**: La hipótesis             nula relacionada a la tabla 3.4 se refiere a que los predictores "TV", "radio" y "newspapers" no tienen efecto alguno en las ventas totales. Podemos observar que los  p-valores de TV y radio, sugieren que la hipótesis nula es falsa para estos predictores, sin embargo, dado que el p-valor de newspaper es alto, podemos inferir que se cumple la hipótesis nula para este predictor.
 
-2. Carefully explain the differences between the KNN classifier and KNN regression methods.
-
+### 2. Carefully explain the differences between the KNN classifier and KNN regression methods.
+---
 
 **R:** El clasificador KNN sirve más para resolver problemas en los que existen variables cualitativas, aquellas cuyos valores son discretos. Por su parte la regresión KNN sirve para los problemas con variables cualitativas, en donde los valores son continuos, además se predice una respuesta cualitativa de la función F(x).
 
-3. Suppose we have a data set with five predictors, X1 =GPA, X2 = IQ, X3 = Gender (1 for Female and 0 forMale), X4 = Interaction between GPA and IQ, and X5 = Interaction between GPA and Gender. The response is starting salary after graduation (in thousands of dollars). Suppose we use least squares to fit the model, and get β0 = 50, β1 = 20, β2 = 0.07, β3 = 35, β4 = 0.01, β5 = −10.
-
+### 3. Suppose we have a data set with five predictors, X1 =GPA, X2 = IQ, X3 = Gender (1 for Female and 0 forMale), X4 = Interaction between GPA and IQ, and X5 = Interaction between GPA and Gender. The response is starting salary after graduation (in thousands of dollars). Suppose we use least squares to fit the model, and get β0 = 50, β1 = 20, β2 = 0.07, β3 = 35, β4 = 0.01, β5 = −10.
+---
 
 **R:** 
 **a)** Tenemos la función predictora. 
@@ -69,7 +56,9 @@ Somo este valor está dado en miles de dolares, podemos estimar un salario de $1
 
 **R:** Falso: Para determinar si existe una verdadera relación se utilizan herramientas como los p-valores, la estadística t y la R²
 
-4. I collect a set of data (n=100 observations) containing a single predictor and a quantitative response. I then fit a linear regression model to the data, as well as a separate cubic regression, i.e. Y=β0+β1X+β2X2+β3X3+ε
+### 4. I collect a set of data (n=100 observations) containing a single predictor and a quantitative response. I then fit a linear regression model to the data, as well as a separate cubic regression, i.e. Y=β0+β1X+β2X2+β3X3+ε
+---
+
 
 a) Suppose that the true relationship between X and Y is linear, i.e. Y=β0+β1X+ε. Consider the training residual sum of squares (RSS) for the linear regression, and also the training RSS for the cubic regression. Would we expect one to be lower than the other, would we expect them to be the same, or is there not enough information to tell? Justify your answer.
 
@@ -92,8 +81,10 @@ d) Answer (c) using test rather than training RSS.
 
 **R:** No hay suficiente información para saber que RSS es mejor o peor, debido a que no sabemos que tan lejos están los modelos del modelo lineal, entonces teniendo el conjunto de prueba el RSS del modelo lineal podría ser mejor o peor, pero no es claro.
 
-5.  Consider the fitted values that result from performing linear regression without an intercept. In this setting, the i-th fitted value takes the form yi=xiβ.
-![2020-03-27_21-49-32](2020-03-27_21-49-32.png)
+### 5.  Consider the fitted values that result from performing linear regression without an intercept. In this setting, the i-th fitted value takes the form yi=xiβ.
+---
+
+![2020-03-27_21-49-32](https://github.com/alex309-duarte/Proyecto-2/tree/master/imagenes_tarea03/2020-03-27_21-49-32.png)
 y
 ![2020-03-27_21-49-51](2020-03-27_21-49-51.png)
 ¿Qué es ai'?
