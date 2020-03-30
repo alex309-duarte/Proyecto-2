@@ -96,8 +96,7 @@ Haciendo un poco de álgebra podemos obtener:
 
 ![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/2020-03-27_21-49-09.png)
 
-#### 6. Using (3.4), argue that in the case of simple linear regression, the
-least squares line always passes through the point (x1, y1).
+#### 6. Using (3.4), argue that in the case of simple linear regression, the least squares line always passes through the point (x1, y1).
 ---
 La línea de mínimos cuadrados está dada por: 
     y=β0+β1X
