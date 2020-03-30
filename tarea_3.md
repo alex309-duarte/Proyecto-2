@@ -84,11 +84,11 @@ d) Answer (c) using test rather than training RSS.
 ### 5.  Consider the fitted values that result from performing linear regression without an intercept. In this setting, the i-th fitted value takes the form yi=xiβ.
 ---
 
-![](https://github.com/alex309-duarte/Proyecto-2/tree/master/2020-03-27_21-49-32.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/2020-03-27_21-49-32.png)
 
 y
 
-![](https://github.com/alex309-duarte/Proyecto-2/tree/master/imagenes_tarea03/2020-03-27_21-49-51.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/imagenes_tarea03/2020-03-27_21-49-51.png)
 
 ¿Qué es ai'?
 **R:**
