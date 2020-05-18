@@ -33,9 +33,9 @@ e)	Para el error irreducible (ruido).
 Inciso v) permanece constante. Esto se debe a que el error irreducible, o ruido, es independiente del modelo, por lo tanto, no cambia con este método de regularización.
 
 6. 
-a) probar que la expresión 6.14 es solución de la expresión de Ridge 6.12 con valor de p=1, y cualquier valor, lambda mayor que cero y esto graficado en función de un intervalo de beta.
+a) Probar que la expresión 6.14 es solución de la expresión de Ridge 6.12 con valor de p=1, y cualquier valor, lambda mayor que cero y esto graficado en función de un intervalo de beta.
 
-**R:** primero vamos a guaradr el método de Ridge en una función, posteriormente vamos a berificar en un rango de betas, donde el valor de p = 1, y cualquier valor de yi, donde nuestro grafica debe de confirmar que la solución de la ecuación 6.14. para que exista solución debe de haber una intersección. Vamos a graficar con respecto de β, que le dimos un intervalo de -5 a 5 con un paso de 0.1.
+**R:** primero vamos a guaradr el método de Ridge en una función, posteriormente vamos a verificar en un rango de betas, donde el valor de p = 1, y cualquier valor de yi, donde nuestro gráfico debe de confirmar que la solución de la ecuación 6.14. para que exista solución debe de haber una intersección. Vamos a graficar con respecto de β, que le dimos un intervalo de -5 a 5 con un paso de 0.1.
 
 ```r
 y = 5   # establecemos un valor arbitrario de y
@@ -143,6 +143,7 @@ Los coeficientes son muy aproximados a los propuestos en el modelo Y.
 Con la misma función regsubsets() podemos seleccionar al final el tipo de selección de variables que deseamos, en este caso se eligió primero selección hacia adelante o Forward y luego la selección hacia atras o backward partiendo del hecho que nuestro que nuestro modelo se guardo en y, Y = y, en ele ejericio anterior por lo que no es necesario repetirlo.
 
 ```r
+#método de seleción de variables forward y backward
 modelo.forward = regsubsets(y ~ poly(x, 10, raw = T), data = data.full, nvmax = 10, method = "forward")  #calculamos el modelo con selección de variables hacia adelante
 modelo.backward = regsubsets(y ~ poly(x, 10, raw = T), data = data.full, nvmax = 10, method = "backward") #calculamos el modelo con la selección de variables hacia atrás
 modelo.forward.summary = summary(modelo.forward)  
@@ -166,3 +167,302 @@ mtext("Gráficas de ajuste por selección hacia adelante inidicando cp, BIC y R^
 Indicamos con un punto de color verde en las gráficas donde se encuentra el mínimo valor de cp y BIC dependiendo del numero de variables escogidas para nuestro modelo y el máximo valor de R^2. En la siguiente imágen se ven agrupadas las gráficas.
 
 ![](6_8_d_1.png)
+
+Para el método de selección de variables hacia atrás vamos a proceder a gráficar el cp, BIC y el R^2 buscando en los dos primeros el mínimo en las gráficas y en R^2 buscando el máximo. Los puntos mínimos y máximos estan indicados con un punto verde.
+
+```r
+par(mfrow = c(2, 2))
+plot(modelo.backward.summary$cp, xlab = "Número de variables", ylab = "Forward Cp, estadístico Mallow", pch = 20, type = "l")
+points(3, modelo.backward.summary$cp[3], pch = 20, col = 4, lwd = 7)
+plot(modelo.backward.summary$bic, xlab = "Número de variables", ylab = "Forward BIC", pch = 20, 
+    type = "l")
+points(3, modelo.backward.summary$bic[3], pch = 20, col = 4, lwd = 7)
+plot(modelo.backward.summary$adjr2, xlab = "Número de variables", ylab = "Forward R^2", 
+    pch = 20, type = "l")
+points(3, modelo.backward.summary$adjr2[3], pch = 20, col = 4, lwd = 7)
+mtext("Gráficas de ajuste por selección hacia atrás inidicando cp, BIC y R^2", side = 3, line = -2, outer = TRUE)
+```
+
+Como podemos observar en las gráficas el mínimo, y el máximo en el caso de R^2, se encuentran en el numero de variables igual a tres. Los puntos mínimos y máximos, segun el tipo de gráfica, estan indicados de color azul.
+
+![](6_8_d_2.png)
+
+Ahora vamos a extraer los coeficientes ideales de la regresión, con tres variables, tanto para el método de backward como fordward.
+
+```r
+coefficients(modelo.forward, id = 3) # obtenemos el modelo a partir selección hacia adelante
+```
+
+(Intercept) = 5.0762283505285
+
+poly(x, 10, raw = T)1:-1.78069755335632
+
+poly(x, 10, raw = T)2:2.8419935402321poly
+
+(x, 10, raw = T)7:0.00764952811755898
+
+```r
+coefficients(modelo.forward, id = 3) #obtenemos el modelo a partir de selección hacia atrás
+```
+(Intercept) = 5.07917829297518
+
+poly(x, 10, raw = T)1:-1.73735728547462
+
+poly(x, 10, raw = T)2:2.83173910146723
+
+poly(x, 10, raw = T)9:0.00138563699722447
+
+En el método de selección de variables hacia adelante se parte de todos los predictores y se van eliminando los que no son significativos para el modelo, al contrario de la selección hacia atrás donde la selección de las variables se hace por las que mas influyen y se agregan al modelo, en ambos resultados son parecidos al modelo original, notamos algunas diferencias significativas solo en el tercer término.
+
+e) Ahora ajustamos el método de Lasso a los modelos generamos desde X hasta X^10. Aquí vamos a usar validación cruzada o cross validation para selecciónar el óptimo valor de lambda.
+
+Para utilizar Lasso necesitamos ocupar la libreria "glmnet" 
+
+```r
+library(glmnet)
+modelos = model.matrix(y ~ poly(x, 10, raw = T), data = data.full)[, -1] # Aplicamos todos los modelos posibles con x hasta x^10
+modelos.lasso = cv.glmnet(xmat, Y, alpha = 1) #Aplicamos validación cruzada, para encontrar que variables sirven
+min.lambda = mod.lasso$lambda.min  #encontreamos el valor para el cual lambda es mínima a través del método de Lasso
+min.lambda
+```
+El valor mínimo de lambda es 0.0440506397617391 para nuestro modelo.
+
+Ahora que sabemos el valor mínimo de lambda podemos predecir el valor óptimo de los coeficientes. 
+
+```r
+min_modelo = glmnet(modelos, Y, alpha = 1) # aplicamos el mejor modelo 
+predict(min_modelo, s = min.lambda, type = "coefficients") #utilizamos la lambda mínima para encontrar los mejores coeficientes
+```
+
+(Intercept)             5.152664162
+
+poly(x, 10, raw = T)1  -1.622329543
+
+poly(x, 10, raw = T)2   2.630760960
+
+poly(x, 10, raw = T)3   .          
+
+poly(x, 10, raw = T)4   0.044064200
+
+poly(x, 10, raw = T)5   .        
+
+poly(x, 10, raw = T)6   .       
+
+poly(x, 10, raw = T)7   .       
+
+poly(x, 10, raw = T)8   .     
+
+poly(x, 10, raw = T)9   0.000999706
+
+poly(x, 10, raw = T)10  .          
+
+Son valores muy aproximados al modelo original, el termino elevado a la novena potencia es despreciable debido al bajo valor que tiene y en vez de escoger el tercer término al cubo lo escogió a una potencia superior a la esperada.
+
+Graficamos todos los valores generados por le método de Lasso con respecto de lambda con la siguiente función me R
+
+```r
+plot(modelos.lasso) #graficamos los valores de lambda optenidos por el método de lasso contra el promedio del error cuadratico
+```
+
+![](6_8_e_1.png)
+
+f) ahora vamos a generar otro modelo para Y de la siguiente forma Y = β0 + β1*X^7 + error, aplicando los métodos anteriormente 
+
+```r
+Y = 2 + 6*X^7+ ruido # generamos el modelo con los valores de X generados anteriormente, con X^7
+datos = data.frame(y=Y,x=X) # generamos el dataframe
+modelos_todos = regsubsets(y ~ poly(x, 10, raw = T), data = datos, nvmax = 10) # generamos todos los posibles modelos
+modelo.summary = summary(modelos_todos) # simplificamos los datos con la función summary
+
+which.min(modelo.summary$cp) # buscamos el numero de variables por cp para buscar el número de variables
+```
+
+Resultado de 2 variables
+
+```r
+which.min(modelo.summary$bic) #buscamos el valor minimo BIC para el número de variables
+```
+
+Resultado de 1 variable
+
+```r
+which.max(modelo.summary$adjr2) #buscamos el valor mpinimo para R^2 para buscar el número de variables
+```
+
+Resultado de 4 variables
+
+```r
+coefficients(modelos_todos, id = 2) # vemos los coeficientes que corresponden para cada seleción de variables
+```
+
+(Intercept):2.07049036762632
+
+poly(x, 10, raw = T)2:-0.141708425295775
+
+poly(x, 10, raw = T)7:6.00155518856388
+
+```r
+coefficients(modelos_todos, id = 1) # vemos los coeficientes que corresponden para cada seleción de variables
+```
+
+(Intercept):1.958940246745
+
+poly(x, 10, raw = T)7:6.00077047427057
+
+```r
+coefficients(modelos_todos, id = 4) # vemos los coeficientes que corresponden para cada seleción de variables
+```
+
+(Intercept):2.07625244968328
+
+poly(x, 10, raw = T)1:0.291401607644686
+
+poly(x, 10, raw = T)2:-0.161767130528645
+
+poly(x, 10, raw = T)3:-0.252652678281635
+
+poly(x, 10, raw = T)7:6.00913375439678
+
+```r
+modelos = model.matrix(y ~ poly(x, 10, raw = T), data = data.full)[, -1] # escojemos todos los modelos, con todos los coeficientes con x hasya x^10
+modelo.lasso = cv.glmnet(modelos, Y, alpha = 1)  # luego buscamos el mejor modelo por validción cruzada por el método de lasso
+min.lambda = modelo.lasso$lambda.min
+
+```
+
+```r
+mejor.modelo = glmnet(modelos, Y, alpha = 1) #generamos los pomelos por el método de lasso
+predict(mejor.modelo, s = best.lambda, type = "coefficients") # generamos el mejor modelo
+```
+
+(Intercept)            2.697189 .
+
+poly(x, 10, raw = T)1  .    
+
+poly(x, 10, raw = T)2  .    
+
+poly(x, 10, raw = T)3  .    
+
+poly(x, 10, raw = T)4  .   
+
+poly(x, 10, raw = T)5  .  
+
+poly(x, 10, raw = T)6  .      
+
+poly(x, 10, raw = T)7  5.825845 .
+
+poly(x, 10, raw = T)8  .  
+
+poly(x, 10, raw = T)9  .    
+
+poly(x, 10, raw = T)10 .   
+
+La mejor selección fue hecha por la selelción de Lasso 
+
+10. We have seen that as the number of features used in a model increases, the training error will necessarily decrease, but the test error may not. We will now explore this in a simulated data set.
+**a) Genere un set de datos con p = 20 carcterísticas, y 1000 observaciones y es generado por el vector Y de la siguiente forma. Y = βX + ruido** donde beta tiene algunos valores iguales a cero
+
+```r
+set.seed(1) # creamos la semilla
+p = 20
+n = 1000
+x = matrix(rnorm(n*p),n,p) # genreamos una matriz con valores normales de tamaño n por p
+beta = rnorm(p) #generamos la función x con n=1000
+h = sample(1:20,5,replace = FALSE) #generamos numeros aleatorios
+for (i in 1:5)
+    beta[h[i]]=0  #hacemos algunas betas iguales a cero
+ruido = rnorm(p) # generamos el vector de ruido
+y = x %*% beta + ruido # generamos el modelo
+```
+
+**b) vamos a dividir nuestro data set en 100 observaciones y otras 900 van a ser en el set de entrenamiento.**
+
+```r
+train = sample(1:1000,100,replace = FALSE) #generamos los 900 datos de entrenamiento y 100 de test
+train_y = y[train, ]  #generamos el set de entrenamiento
+test_y = y[-train, ]  #generamos el set de test
+train_x = x[train, ]
+test_x = x[-train, ]
+```
+
+**c) Realizar la mejor selelción del conjunto de entrenamiento, y graficar el mejor conjunto MSE para el mejor modelo de cada tamaño.**
+
+```r
+modelo = data.frame(y = train_y, x = train_x) #generamos el dataframe
+modelo_comp = regsubsets(y ~ ., data = modelo, nvmax = 20)
+modelos_matrix = model.matrix(y ~ ., data = modelo, nvmax = 20)
+valores = rep(0, 20) #replicamos los elementos de una lista, esto es generar una lista de tamaño 20 con todos los elemntos iguales a cero.
+for (i in 1:20) {
+    coeficientes = coef(modelo_comp, id = i) #evaluamos cada modelo generado a través del identificador i, como en el problema 8
+    pred = modelos_matrix[, names(coeficientes)] %*% coeficientes 
+    valores[i] = mean((pred - train_y)^2)
+}
+plot(valores, xlab = "Número de predictores", ylab = "set de entrenamiento MSE", pch = 20,type="b") #graficamos cada numero de variables, que van de cero a veinte contra en promedio del error cuadrado del set de entrenamiento
+```
+
+![](6_10_c_1.png)
+
+**d) hacemos lo mismo del inciso c) para los valores de test.
+
+```r
+modelo_test = data.frame(y = test_y, x = test_x) # generamos el dataframe
+modelo_test_matrix = model.matrix(y ~ ., data = modelo_test, nvmax = 20) #
+valores = rep(0, 20)  # generamos una lista de 0 a 20 llena de ceros
+for (i in 1:20) {
+    coefi = coef(modelo_comp, id = i)
+    pred = modelo_test_matrix[, names(coefi)] %*% coefi
+    valores[i] = mean((pred - test_y)^2) #en la lista de valores guaradamos el promedio con cierto número de variables
+}
+plot(valores, xlab = "Número de predictores", ylab = "set de prueba MSE", pch = 19, type = "b") # generamos la gráfica de todos los posibles modelos, de 0 a 20 pero con los datos del set de entrenamiento
+```
+
+![](6_10_d_1.png)
+
+**e) para que tamaño del modelo del conjunto de pruebas MSE toma el valor mínimo **
+
+Esto se hace obteniendo el mpinimo valor para el conjunto de valores donde guardamos el error promedio cuadratico MSE.
+
+```r
+which.min(valores) # buscamos el valor mínimo de MSE del set de test
+```
+
+Es de 15 el valor minimo, por lo tanto con 16 variables tenemos el menor MSE.
+
+**f) buscar el modelo**
+
+```r
+coef(modelo_comp, id = 15) # buscamos el modelos, los valores de los coeficientes, con el identificador 
+```
+
+(Intercept):0.0256087383675092
+x.3:-0.53582873825561
+x.5:1.1269288270941
+x.6:-0.25244655631405
+x.7:-1.34435865450564
+x.8:0.796874849061235
+x.9:1.95206949671049
+x.10:0.851635786060172
+x.11:0.878751185630349
+x.12:0.611389941030793
+x.13:-0.33796868154489
+x.15:-0.729064926766218
+x.17:0.311682540214127
+x.18:1.68638798437704
+x.19:0.933290118604291
+x.20:-1.03163757315562
+
+**g) crear un gráfico en el que se muestre la expresión mostrada anteriormente.
+
+```r
+valores = rep(0, 20) #generamos la lista de los 20 valores
+x_cols = colnames(x, do.NULL = FALSE, prefix = "x.")
+for (i in 1:20) {
+    coeficientes <- coef(modelo_comp, id = i) #escogemos los coefientes del modelo_comp
+    valores[i] <- sqrt(sum((beta[x_cols %in% names(coeficientes)] - coeficientes[names(coeficientes) %in% x_cols])^2) + sum(beta[!(x_cols %in% names(coeficientes))])^2)
+} #aplicamos la expresión del inciso del ejericcio
+plot(valores, xlab = "Número de coeficientes", ylab = "Error entre coeficientes estimados y los coeficientes", pch = 19, type = "b")
+```
+
+![](6_10_e_1.png)
+
+el mínimo valor es 15.
