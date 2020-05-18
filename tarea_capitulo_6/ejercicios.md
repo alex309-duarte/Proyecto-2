@@ -182,30 +182,38 @@ ___
 a) Write out the likelihood for the data.
 
 **R** La verosimilitud la podemos expresar como:
+
 ![2020-05-15_19-39-05](2020-05-15_19-39-05.png)
 
 b) Assume the following prior for β: β1, . . . , βp are independent and identically distributed according to a double-exponential distribution with mean 0 and common scale parameter b. Write out the posterior for β in this setting.
 
 **R** Sabemos que:
+
 ![2020-05-15_19-49-31](2020-05-15_19-49-31.png)
 
 c) Argue that the lasso estimate is the mode for β under this posterior distribution.
 
 **R** Del inciso anterior podemos factorizar la parte exponencial obteniendo: 
+
 ![2020-05-15_20-21-40](2020-05-15_20-21-40.png)
+
 ![2020-05-15_20-21-53](2020-05-15_20-21-53.png)
+
 ![2020-05-15_20-22-04](2020-05-15_20-22-04.png)
 
 d) Now assume the following prior for β: β1, . . . , βp are independent and identically distributed according to a normal distribution with mean zero and variance c. Write out the posterior for β in this setting.
 
 **R** Podemos escribir que:
+
 ![2020-05-15_20-39-34](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_20-39-34.png)
 
 e)Argue that the ridge regression estimate is both the mode and the mean for β under this posterior distribution. 
 
 **R** Podemos pobrar esto como en el inciso c) fijando un λ específico:
 Del inciso anterior podemos sacar logaritmo de ambos lados.
+
 ![2020-05-15_20-59-29](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_20-59-29.png)
+
 ![2020-05-15_20-59-45](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_20-59-45.png)
 
 
