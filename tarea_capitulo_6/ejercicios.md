@@ -102,47 +102,47 @@ a) Write out the ridge regression optimization problem in this setting.
 
 **R** como sabemos que x11=x12=x1 and  x21=x22=x2, entonces podemos escribir que la regresión Ridge busca regularizar el siguiente problema: 
 
-![2020-05-15_16-04-06](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_16-04-06.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_16-04-06.png)
 
 b) Argue that in this setting, the ridge coefficient estimates satisfy β1 =  β2.
 
 **R** Para probar esto es necesario sacar la  derivada de la expresión anterior con respecto a  β1 y β2 e igualarla a 0. Obteniendo las siguientes dos expresiones: 
 
-![2020-05-15_16-15-40](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_16-15-40.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_16-15-40.png)
 
 c) Write out the lasso optimization problem in this setting.
 
 **R** como sabemos que x11=x12=x1 and  x21=x22=x2 podemos escribir que el problema que busca resolver Lasso es el siguiente:
 
-![2020-05-15_16-25-55](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_16-25-55.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_16-25-55.png)
 
 
 d) Argue that in this setting, the lasso coefficients  β1 and β2 are not unique—in other words, there are many possible solutions to the optimization problem in (c). Describe these solutions.
 
 **R** Partimos utilizando la otra forma de Lasso 
 
-![2020-05-15_18-33-06](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-33-06.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-33-06.png)
 
 sabemos que en el plano Lasso toma la siguiente forma en donde las intersecciones están a una distancia s del origen:
 
-![2020-05-15_18-34-10](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-34-10.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-34-10.png)
 
 Pero también sabemos por las condiciones del problema que: 
 
-![2020-05-15_18-39-51](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-39-51.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-39-51.png)
 
 entonces podemos reducir la expresión a:
  
-![2020-05-15_18-43-07](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-43-07.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-43-07.png)
 
 podemos entonces determinar que la solución del problema es: β1+β2=y1/x2. Esto lo podemos observar en la gráfica como una linea paralela al borde del rombo formado. Las soluciones de lasso son los contornos que se pueden ver como
 
-![2020-05-15_18-49-39](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-49-39.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-49-39.png)
 
 que intersecta al rombo en la esquina. 
 Podemos también determinar que todo el borde β1+β2=s y el β1+β2=-s son posibles soluciones. Entonces podemos decir que en realidad existe un conjunto de soluciones (que está dado por dos segmentos de recta) para lasso y no solo una que sería:
 
-![2020-05-15_19-05-07](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_19-05-07.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_19-05-07.png)
 
 
 6. 
