@@ -46,7 +46,7 @@ solved_beta = y/(1 + lambda)  # agregamos la función propuesta, que es solució
 points(solved_beta, (y - solved_beta)^2 + lambda * solved_beta^2, col = 2, lwd = 6, cex = solved_beta)# agregamos el punto, mientras que cruce con la gráfica es solución
 ```
 
-![](https://github.com/alex309-duarte/Proyecto-2/tree/master/tarea_capitulo_6/imagenes/6_a_1.png)
+![grafica](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_a_1.png)
 
 De la gráfica anterior el punto rojo simboliza la intersección de la solución alternativa de Beta=y/(1+lambda).
 
