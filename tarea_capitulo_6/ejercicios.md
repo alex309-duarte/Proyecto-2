@@ -61,7 +61,7 @@ solved_beta = y - lambda/2  #la expresión solución para lasso
 points(solved_beta, (y - solved_beta)^2 + lambda * abs(solved_beta), col = 2, pch = 4, lwd = 5, cex = est.beta) #indicamos la intersección de la solución de Lasso, la cual debe de intersectar en algún lugar de la gráfica de la expresión de lasso
 ```
 
-![](6_b_1.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_b_1.png)
 
 8. In this exercise, we will generate simulated data, and will then use this data to perform best subset selection.
 
@@ -110,15 +110,15 @@ points(which.max(modelo.summary$adjr2), modelo.summary$adjr2[which.max(modelo.su
 
 buscamos que el coefiente cp o estadístico de Mallow sea mínimo, en la siguiente gráfica se puede ver que el estadístico Mallow o cp contra el numero de variables.  El punto rojo indica donde se encuentra el valor mas pequeño.
 
-![](6_c_1.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_c_1.png)
 
 Buscamos que el BIC o críterio bayesiano sea el mínimo posible, en la siguiente gráfica podemos ver el valor BIC contra el numero de variables. El punto rojo indica donde se encuentra el valor mas pequeño.
 
-![](6_c_2.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_c_2.png)
 
 Buscamos que el valor R^2 sea muy grande, en la siguiente grafica podemos ver como una cruz en rojo que indica donde el valor de la gráfica de R^2 contra las variables es mas grande.
 
-![](6_c_3.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_c_3.png)
 
 en todos coincide que es en en las tres variables, luego vemos los coeficientes para ese caso en específico con la siguiente función en R.
 
@@ -166,7 +166,7 @@ mtext("Gráficas de ajuste por selección hacia adelante inidicando cp, BIC y R^
 
 Indicamos con un punto de color verde en las gráficas donde se encuentra el mínimo valor de cp y BIC dependiendo del numero de variables escogidas para nuestro modelo y el máximo valor de R^2. En la siguiente imágen se ven agrupadas las gráficas.
 
-![](6_8_d_1.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_8_d_1.png)
 
 Para el método de selección de variables hacia atrás vamos a proceder a gráficar el cp, BIC y el R^2 buscando en los dos primeros el mínimo en las gráficas y en R^2 buscando el máximo. Los puntos mínimos y máximos estan indicados con un punto verde.
 
@@ -185,7 +185,7 @@ mtext("Gráficas de ajuste por selección hacia atrás inidicando cp, BIC y R^2"
 
 Como podemos observar en las gráficas el mínimo, y el máximo en el caso de R^2, se encuentran en el numero de variables igual a tres. Los puntos mínimos y máximos, segun el tipo de gráfica, estan indicados de color azul.
 
-![](6_8_d_2.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_8_d_2.png)
 
 Ahora vamos a extraer los coeficientes ideales de la regresión, con tres variables, tanto para el método de backward como fordward.
 
@@ -264,7 +264,7 @@ Graficamos todos los valores generados por le método de Lasso con respecto de l
 plot(modelos.lasso) #graficamos los valores de lambda optenidos por el método de lasso contra el promedio del error cuadratico
 ```
 
-![](6_8_e_1.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_8_e_1.png)
 
 f) ahora vamos a generar otro modelo para Y de la siguiente forma Y = β0 + β1*X^7 + error, aplicando los métodos anteriormente 
 
@@ -400,7 +400,7 @@ for (i in 1:20) {
 plot(valores, xlab = "Número de predictores", ylab = "set de entrenamiento MSE", pch = 20,type="b") #graficamos cada numero de variables, que van de cero a veinte contra en promedio del error cuadrado del set de entrenamiento
 ```
 
-![](6_10_c_1.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_10_c_1.png)
 
 **d) hacemos lo mismo del inciso c) para los valores de test.
 
@@ -416,7 +416,7 @@ for (i in 1:20) {
 plot(valores, xlab = "Número de predictores", ylab = "set de prueba MSE", pch = 19, type = "b") # generamos la gráfica de todos los posibles modelos, de 0 a 20 pero con los datos del set de entrenamiento
 ```
 
-![](6_10_d_1.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_10_d_1.png)
 
 **e) para que tamaño del modelo del conjunto de pruebas MSE toma el valor mínimo **
 
@@ -463,6 +463,6 @@ for (i in 1:20) {
 plot(valores, xlab = "Número de coeficientes", ylab = "Error entre coeficientes estimados y los coeficientes", pch = 19, type = "b")
 ```
 
-![](6_10_e_1.png)
+![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_10_e_1.png)
 
 el mínimo valor es 15.
