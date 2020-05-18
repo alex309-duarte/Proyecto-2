@@ -1,3 +1,42 @@
+# Ejercicios-Capitulo 6
+
+#### Samuel Romero Santiago
+#### Manuel Alejandro Cardoso Duarte
+
+1. **We perform best subset, forward stepwise, and backward stepwise selection on a single data set. For each approach, we obtain p + 1 models, containing 0, 1, 2, . . . , p predictors. Explain your answers:**
+___
+
+a) Which of the three models with k predictors has the smallest training RSS?
+
+ **R:** El modelo que proveé un menor RSS de entrenamiendo es el de elegir el mejor subconjunto porque selecciona un modelo entre todos los posibles generados por todas las K.
+
+b) Which of the three models with k predictors has the smallest
+test RSS?
+
+**R:** No se puede saber, sin embargo podríamos suponer que el modelo de elegir el mejor subconjunto podría tener un mejor RSS porque elige entre más modelos que los otros dos.
+
+c) True or false
+
+i)  The predictors in the k-variable model identified by forward stepwise are a subset of the predictors in the (k+1)-variable model identified by forward stepwise selection.
+
+**R** Verdadero: el modelo con (k+1) predictores se obtiene considerando los predictores en el modelo de k predictores con uno más.
+
+ii) The predictors in the k-variable model identified by backward stepwise are a subset of the predictors in the (k + 1)- variable model identified by backward stepwise selection.
+
+**R** Verdadero: Este modelo se obtiene quitando uno al modelo con (k+1) variables. 
+
+iii) The predictors in the k-variable model identified by backward stepwise are a subset of the predictors in the (k + 1)- variable model identified by forward stepwise selection.
+
+**R:** Falso: No hay relación directa entre ambos modelos.
+
+iv) The predictors in the k-variable model identified by forward stepwise are a subset of the predictors in the (k+1)-variable model identified by backward stepwise selection.
+
+**R** Falso: Como ya se mencionó no existe una relación directa entre ambos modelos.
+
+v)The predictors in the k-variable model identified by best subset are a subset of the predictors in the (k + 1)-variable model identified by best subset selection.
+
+**R** Falso: el modelo de k+1 variables se obtiene seleccionando entre todas los posibles modelos con k+1 varibales, pero puede no contener todaslas variables seleccionadas para el modelo de k-variables.
+
 2. **For parts (a) through (c), indicate which of i. through iv. is correct. Justify your answer.** 
 ___
 
@@ -13,7 +52,31 @@ ___
 
 **R:** Inciso ii). Los métodos no lineales son más flexibles, tienen un sesgo menor pero un incremento en la varianza, se enfocan más en hacer un ajuste de los puntos mayor a través de otro tipo de funciones, esto sacrificando el aumento de la varianza.
 
+3. **Suppose we estimate the regression coefficients in a linear regression model by minimizing... for a particular value of s. For parts (a) through (e), indicate which of i. through v. is correct. Justify your answer.**
+___
+
+a) As we increase s from 0, the training RSS will: 
+
+**R** el RSS irá disminuyendo: Si incrementamos s, el coeficiente βj irá aumentando cada vez más hacia su minimo cuadrado (estimado), por lo que el modelo se va haciendo más flexible (complejo) que provoca una decreción continua en el RSS. 
+
+b)Repeat (a) for test RSS.
+
+**R** Decrece inicialmente, después crece en forma de U: como incrementamos s de igual forma el coeficiente βj irá aumentando cada vez más hacia su minimo cuadrado (estimado), lo que provoca que se reduzca el RSS de prueba hasta que eventualmente comienza a crecer en forma de U. 
+
+c) Repeat (a) for variance.
+
+**R** Continuamente incrementa: omo incrementamos s de igual forma el coeficiente βj irá aumentando cada vez más hacia su minimo cuadrado (estimado), esto hace que el modelo sea más flexible disminuyendo la varianza. 
+
+d) Repeat (a) for (squared) bias.
+
+**R** Constantemente decrece: Como el modelo se va haciendo más flexible cada vez cuando aumentamos s, el sezgo va decreciendo constantemente.
+
+e) Repeat (a) for the irreducible error.
+
+**R** Se mantiene constante, ya que el error irreducible es independiente del modelo y no se puede controlar.
+
 4. **Suppose we estimate the regression coefficients in a linear regression model by minimizing**
+___
 
 **for a particular value of λ. For parts (a) through (e), indicate which of i. through v. is correct. Justify your answer.**
 
@@ -31,6 +94,56 @@ Inciso iv) decremente continuamente. Esto se debe que al incrementar **s** los c
 
 e)	Para el error irreducible (ruido).
 Inciso v) permanece constante. Esto se debe a que el error irreducible, o ruido, es independiente del modelo, por lo tanto, no cambia con este método de regularización.
+
+5. **It is well-known that ridge regression tends to give similar coefficient values to correlated variables, whereas the lasso may give quite different coefficient values to correlated variables. We will now explore this property in a very simple setting. Suppose that n = 2, p = 2, x11 = x12, x21 = x22. Furthermore, suppose that y1+y2 = 0 and x11+x21 = 0 and x12+x22 = 0, so that the estimate for the intercept in a least squares, ridge regression, or lasso model is zero: β0 = 0.**
+___
+
+a) Write out the ridge regression optimization problem in this setting.
+
+**R** como sabemos que x11=x12=x1 and  x21=x22=x2, entonces podemos escribir que la regresión Ridge busca regularizar el siguiente problema: 
+
+![2020-05-15_16-04-06](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_16-04-06.png)
+
+b) Argue that in this setting, the ridge coefficient estimates satisfy β1 =  β2.
+
+**R** Para probar esto es necesario sacar la  derivada de la expresión anterior con respecto a  β1 y β2 e igualarla a 0. Obteniendo las siguientes dos expresiones: 
+
+![2020-05-15_16-15-40](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_16-15-40.png)
+
+c) Write out the lasso optimization problem in this setting.
+
+**R** como sabemos que x11=x12=x1 and  x21=x22=x2 podemos escribir que el problema que busca resolver Lasso es el siguiente:
+
+![2020-05-15_16-25-55](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_16-25-55.png)
+
+
+d) Argue that in this setting, the lasso coefficients  β1 and β2 are not unique—in other words, there are many possible solutions to the optimization problem in (c). Describe these solutions.
+
+**R** Partimos utilizando la otra forma de Lasso 
+
+![2020-05-15_18-33-06](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-33-06.png)
+
+sabemos que en el plano Lasso toma la siguiente forma en donde las intersecciones están a una distancia s del origen:
+
+![2020-05-15_18-34-10](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-34-10.png)
+
+Pero también sabemos por las condiciones del problema que: 
+
+![2020-05-15_18-39-51](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-39-51.png)
+
+entonces podemos reducir la expresión a:
+ 
+![2020-05-15_18-43-07](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-43-07.png)
+
+podemos entonces determinar que la solución del problema es: β1+β2=y1/x2. Esto lo podemos observar en la gráfica como una linea paralela al borde del rombo formado. Las soluciones de lasso son los contornos que se pueden ver como
+
+![2020-05-15_18-49-39](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_18-49-39.png)
+
+que intersecta al rombo en la esquina. 
+Podemos también determinar que todo el borde β1+β2=s y el β1+β2=-s son posibles soluciones. Entonces podemos decir que en realidad existe un conjunto de soluciones (que está dado por dos segmentos de recta) para lasso y no solo una que sería:
+
+![2020-05-15_19-05-07](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_19-05-07.png)
+
 
 6. 
 a) Probar que la expresión 6.14 es solución de la expresión de Ridge 6.12 con valor de p=1, y cualquier valor, lambda mayor que cero y esto graficado en función de un intervalo de beta.
@@ -62,6 +175,39 @@ points(solved_beta, (y - solved_beta)^2 + lambda * abs(solved_beta), col = 2, pc
 ```
 
 ![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_b_1.png)
+
+7. **We will now derive the Bayesian connection to the lasso and ridge regression discussed in Section 6.2.2**
+___
+
+a) Write out the likelihood for the data.
+
+**R** La verosimilitud la podemos expresar como:
+![2020-05-15_19-39-05](2020-05-15_19-39-05.png)
+
+b) Assume the following prior for β: β1, . . . , βp are independent and identically distributed according to a double-exponential distribution with mean 0 and common scale parameter b. Write out the posterior for β in this setting.
+
+**R** Sabemos que:
+![2020-05-15_19-49-31](2020-05-15_19-49-31.png)
+
+c) Argue that the lasso estimate is the mode for β under this posterior distribution.
+
+**R** Del inciso anterior podemos factorizar la parte exponencial obteniendo: 
+![2020-05-15_20-21-40](2020-05-15_20-21-40.png)
+![2020-05-15_20-21-53](2020-05-15_20-21-53.png)
+![2020-05-15_20-22-04](2020-05-15_20-22-04.png)
+
+d) Now assume the following prior for β: β1, . . . , βp are independent and identically distributed according to a normal distribution with mean zero and variance c. Write out the posterior for β in this setting.
+
+**R** Podemos escribir que:
+![2020-05-15_20-39-34](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_20-39-34.png)
+
+e)Argue that the ridge regression estimate is both the mode and the mean for β under this posterior distribution. 
+
+**R** Podemos pobrar esto como en el inciso c) fijando un λ específico:
+Del inciso anterior podemos sacar logaritmo de ambos lados.
+![2020-05-15_20-59-29](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_20-59-29.png)
+![2020-05-15_20-59-45](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_20-59-45.png)
+
 
 8. In this exercise, we will generate simulated data, and will then use this data to perform best subset selection.
 
@@ -359,6 +505,184 @@ poly(x, 10, raw = T)10 .
 
 La mejor selección fue hecha por la selelción de Lasso 
 
+9. **In this exercise, we will predict the number of applications received using the other variables in the College data set.**
+a) Split the data set into a training set and a test set.
+___
+
+**R**
+```r
+library(ISLR)
+data(College)
+set.seed(11)
+train = sample(1:dim(College)[1], dim(College)[1] / 2)
+test <- -train
+Train <- College[train, ]
+Test <- College[test, ]
+summary(Test)
+summary(Train)
+```
+```> dim(Test)
+[1] 389  18
+> dim(Train)
+[1] 388  18
+```
+ b) Fit a linear model using least squares on the training set, and
+report the test error obtained.
+
+**R**
+```r
+fit <- lm(Apps ~ ., data = Train)
+pred<- predict(fit, Test)
+mean((pred - Test$Apps)^2)
+```
+```
+[1] 1538442
+```
+el error medio residual del set de prueba con la regresión lineal es de 1026096
+
+c) Fit a ridge regression model on the training set, with λ chosen by cross-validation. Report the test error obtained.
+
+**R** 
+```r
+library(glmnet)
+train_ridge <- model.matrix(Apps ~ ., data = Train)
+test_ridge <- model.matrix(Apps ~ ., data =Test)
+lam<- 10 ^ seq(4, -2, length = 100)
+Ridge <- glmnet(train_ridge, Train$Apps, alpha = 0, lambda = lam, thresh = 1e-12)
+Ridge_cv <- cv.glmnet(train_ridge,Train$Apps, alpha = 0, lambda = lam, thresh = 1e-12)
+mejor_cv <- Ridge_cv$lambda.min
+mejor_cv
+```
+La menor lambda es
+```
+1] 18.73817
+```
+```r
+ridge_test <- predict(Ridge, s = mejor_cv, newx = test_ridge)
+print("media")
+mean((ridge_test - Test$Apps)^2)
+```
+
+```
+1608859
+```
+La media es mayor a la obtenida por mínimos cuadrados.
+
+d) Fit a lasso model on the training set, with λ chosen by crossvalidation. Report the test error obtained, along with the number of non-zero coefficient estimates.
+
+Primero realizamos cross validation.
+```r
+Lasso <- glmnet(train_ridge, Train$Apps, alpha = 1, lambda = lam, thresh = 1e-12)
+lasso_cv <- cv.glmnet(train_ridge, Train$Apps, alpha = 1, lambda =lam, thresh = 1e-12)
+mejor_lam <- lasso_cv$lambda.min
+mejor_lam
+```
+```
+## [1] 21.54435
+```
+```r
+lasso_pred <- predict(Lasso, s = mejor_lam, newx = ridge_test)
+mean((lasso_pred - Test$Apps)^2)
+```
+```
+## [1] 1635280
+```
+La media también es mayor a los dos métodos anteriores.
+
+```r
+predict(Lasso, s = mejor_lam, type = "coefficients")
+```
+Los coeficientes son
+```
+## 19 x 1 sparse Matrix of class "dgCMatrix"
+##                         1
+## (Intercept) -836.50402310
+## (Intercept)    .         
+## PrivateYes  -385.73749394
+## Accept         1.17935134
+## Enroll         .         
+## Top10perc     22.70211938
+## Top25perc      .         
+## F.Undergrad    0.07062149
+## P.Undergrad    0.01366763
+## Outstate      -0.03424677
+## Room.Board     0.01281659
+## Books         -0.02167770
+## Personal       .         
+## PhD           -1.46396964
+## Terminal      -5.17281004
+## S.F.Ratio      5.70969524
+## perc.alumni   -9.95007567
+## Expend         0.14852541
+
+```
+e) Fit a PCR model on the training set, with M chosen by crossvalidation. Report the test error obtained, along with the value of M selected by cross-validation.
+
+**R**
+```r
+library(pls)
+pcr<- pcr(Apps ~ ., data = Train, scale = TRUE, validation = "CV")
+validationplot(pcr, val.type = "MSEP")
+
+```
+![2020-05-15_21-56-24](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_21-56-24.png)
+
+
+```r
+pcr_pred<- predict(pcr, Test, ncomp = 10)
+mean((pcr_pred - Test$Apps)^2)
+```
+entonces el MSE es 
+```
+## [1] 3014496
+```
+que también es más alto que mínimos cuadrados
+
+f)Fit a PLS model on the training set, with M chosen by crossvalidation. Report the test error obtained, along with the value of M selected by cross-validation.
+
+**R**
+```r
+pls <- plsr(Apps ~ ., data = Train, scale = TRUE, validation = "CV")
+validationplot(pls, val.type = "MSEP")
+```
+![2020-05-15_23-06-52](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_23-06-52.png)
+
+```r
+pls_pred <- predict(pls, Test, ncomp = 10)
+mean((pls_pred - Test$Apps)^2)
+```
+```      
+1508987
+```
+Podemos observar que finalmente el MSE para pls es mejor que el de mínimos cuadrados y los demás métodos.
+
+g) Comment on the results obtained. How accurately can we predict the number of college applications received? Is there much difference among the test errors resulting from these five approaches?
+
+**R**
+Podemos observar que tantos datos puede predecir cada método calculando su R^2:
+```r
+prom_test<- mean(Test$Apps)
+r2_lineal <- 1 - mean((pred - Test$Apps)^2) / mean((prom_test - Test$Apps)^2)
+r2_ridge <- 1 - mean((ridge_test - Test$Apps)^2) / mean((prom_test - Test$Apps)^2)
+r2_lasso <- 1 - mean((lasso_pred - Test$Apps)^2) / mean((prom_test - Test$Apps)^2)
+r2_pcr <- 1 - mean((pcr_pred - Test$Apps)^2) / mean((prom_test - Test$Apps)^2)
+r2_pls<- 1 - mean((pls_pred - Test$Apps)^2) / mean((prom_test - Test$Apps)^2)
+r2_lineal
+r2_ridge
+r2_lasso 
+r2_pcr
+r2_pls
+```
+```
+0.9044281
+0.9000536
+0.8984123
+0.8127319
+0.9062579
+```
+Podemos entonces observar que todos los modelos predicen casi con la misma veracidad con excepción de pcr que lo hace un poco peor.
+
+
 10. We have seen that as the number of features used in a model increases, the training error will necessarily decrease, but the test error may not. We will now explore this in a simulated data set.
 **a) Genere un set de datos con p = 20 carcterísticas, y 1000 observaciones y es generado por el vector Y de la siguiente forma. Y = βX + ruido** donde beta tiene algunos valores iguales a cero
 
@@ -466,3 +790,122 @@ plot(valores, xlab = "Número de coeficientes", ylab = "Error entre coeficientes
 ![](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/6_10_e_1.png)
 
 el mínimo valor es 15.
+
+**11. We will now try to predict per capita crime rate in the Boston data set.** 
+___
+
+a) Try out some of the regression methods explored in this chapter, such as best subset selection, the lasso, ridge regression, and PCR. Present and discuss results for the approaches that you consider.
+
+**R** Primero tenemos que elegir el mejor subconjunto a utilizar en el modelo, para esto, utilizamos cross validation, utilizando 20 folds como k:
+
+
+```r
+library(MASS)
+library(leaps)
+data(Boston)
+set.seed(1)
+###del laboratorio del libro
+predict.regsubsets <- function(object, newdata, id, ...) {
+  form <- as.formula(object$call[[2]])
+  mat <- model.matrix(form, newdata)
+  coefi <- coef(object, id = id)
+  xvars <- names(coefi)
+  mat[, xvars] %*% coefi
+}
+
+
+k = 20 ###se hacen los folds 
+folds <- sample(1:k, nrow(Boston), replace = TRUE)
+cv.errors <- matrix(NA, k, 13, dimnames = list(NULL, paste(1:13)))
+for (j in 1:k) {
+  best.fit <- regsubsets(crim ~ ., data = Boston[folds != j, ], nvmax = 13)
+  for (i in 1:13) {
+    pred <- predict(best.fit, Boston[folds == j, ], id = i)
+    cv.errors[j, i] <- mean((Boston$crim[folds == j] - pred)^2)
+  }
+}
+mean.cv.errors <- apply(cv.errors, 2, mean)
+mean.cv.errors
+plot(mean.cv.errors, type = "b", xlab = "Number of variables", ylab = "CV error") 
+```
+```
+   1        2        3        4        5        6        7        8        9 
+45.85516 43.99675 44.97814 45.52512 44.84868 44.89512 44.21741 43.64725 43.11899 
+      10       11       12       13 
+43.18569 43.19659 43.03855 43.15379 
+```
+![2020-05-15_23-46-35](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_23-46-35.png)
+
+Podemos observar que el menor error es con 12 variables, por lo que el modelo se hará así. 
+
+LASSO
+ ```r  
+x1 <- model.matrix(crim ~ ., Boston)[, -1]
+y2 <- Boston$crim
+Lasso <- cv.glmnet(x, y, alpha = 1, type.measure = "mse")
+plot(Lasso)
+Lasso$lambda.min
+```
+![2020-05-15_23-52-29](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_23-52-29.png)
+
+```
+0.0513069
+```
+Podemos observar una lambda de 0.0513069
+
+RIDGE 
+```r 
+Ridge <- cv.glmnet(x1, y1, alpha = 0, type.measure = "mse")
+plot(Ridge)
+Ridge$lambda.min
+ ``` 
+![2020-05-15_23-59-54](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-15_23-59-54.png)
+
+```
+0.5374992
+```
+con ridge tenemos una lambda de 0.5374992
+
+PCR
+```r
+library(pls)
+pcr <- pcr(crim ~ ., data = Boston, scale = TRUE, validation = "CV")
+summary(pcr)
+validationplot(pcr, val.type = "MSEP")
+```
+```
+Data:     X dimension: 506 13 
+    Y dimension: 506 1
+Fit method: svdpc
+Number of components considered: 13
+
+VALIDATION: RMSEP
+Cross-validated using 10 random segments.
+       (Intercept)  1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps
+CV            8.61    7.194    7.194    6.751    6.747    6.752    6.781    6.774
+adjCV         8.61    7.192    7.191    6.747    6.740    6.748    6.775    6.767
+       8 comps  9 comps  10 comps  11 comps  12 comps  13 comps
+CV       6.652    6.664     6.656     6.662     6.631     6.561
+adjCV    6.644    6.657     6.648     6.652     6.620     6.550
+
+TRAINING: % variance explained
+      1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps
+X       47.70    60.36    69.67    76.45    82.99    88.00    91.14    93.45
+crim    30.69    30.87    39.27    39.61    39.61    39.86    40.14    42.47
+      9 comps  10 comps  11 comps  12 comps  13 comps
+X       95.40     97.04     98.46     99.52     100.0
+crim    42.55     42.78     43.04     44.13      45.4
+```
+![2020-05-16_00-09-38](https://github.com/alex309-duarte/Proyecto-2/blob/master/tarea_capitulo_6/imagenes/2020-05-16_00-09-38.png)
+
+Observamos que en pcr, la validación cruzada toma todos las variables disponibles, por lo que no hay reducción de dimensión.
+
+b) Propose a model (or set of models) that seem to perform well on this data set, and justify your answer. Make sure that you are evaluating model performance using validation set error, crossvalidation, or some other reasonable alternative, as opposed to using training error.
+**R**
+Podemos observar de los modelos elegidos anteriormente que el que presenta un menor error de validación cruzada es en este caso el primero, Lasso, ya que en promedio tiene menor error (observando las gráficas)
+
+c) Does your chosen model involve all of the features in the data set? Why or why not?
+
+**R**
+No, elegiríamos el modelo de Lasso con 12 variables ya que es el que tiene menor error de validación cruzada.
+
